@@ -1,0 +1,16 @@
+# directories
+.idea/
+**/.vscode/
+
+**/bin/
+**/obj/
+**/out/
+Tests.*/
+SampleNotificationsClient/
+
+# files
+**/appsettings.Development.json
+**/*.md
+*.DotSettings.user
+.dockerignore
+**/.gitignore

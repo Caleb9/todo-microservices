@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Api.Dockerfile
+    ports:
+      - "5000:80"
+    volumes:
+      - tododata:/data
+    environment:
+      - ConnectionStrings:TodoApiDatabase=Data Source=/data/Todo.Api.sqlite
+      - ConnectionStrings:MessageBroker=amqp://broker
+    depends_on:
+      - broker
+
+  broker:
+    image: "rabbitmq:management-alpine"
+    ports:
+      - "15672:15672"
+    
+  notifications:
+    build:
+      context: .
+      dockerfile: Notifications.Dockerfile
+    ports:
+      - "5100:80"
+    environment:
+      - ConnectionStrings:MessageBroker=amqp://broker
+    depends_on:
+      - broker
+
+volumes:
+  tododata:

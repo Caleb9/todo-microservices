@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CSharpFunctionalExtensions" Version="2.14.1" />
+        <PackageReference Include="dbup-sqlite" Version="4.5.0" />
+        <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.2" />
+        <PackageReference Include="Rebus.RabbitMq" Version="7.3.0" />
+        <PackageReference Include="Rebus.ServiceProvider" Version="6.2.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Scripts\001-CreateTables.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Data\Scripts\001-CreateTables.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Todo.Shared\Todo.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
